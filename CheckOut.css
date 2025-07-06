@@ -1,0 +1,87 @@
+.checkout-container {
+  display: flex;
+  gap: 40px;
+  padding: 30px;
+  background: #f5fff5;
+}
+
+.billing-form,
+.order-summary {
+  flex: 1;
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.billing-form form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.order-summary .order-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.order-summary .total {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #2e8b57;
+}
+
+.payment-method {
+  margin: 20px 0;
+}
+
+.coupon input {
+  padding: 8px;
+  width: 60%;
+  margin-right: 10px;
+}
+
+.coupon button {
+  padding: 8px 12px;
+  background: #2e8b57;
+  color: white;
+  border: none;
+  border-radius: 5px;
+}
+
+.btn-primary {
+  background: #2e8b57;
+  color: white;
+  padding: 12px;
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+#card-form {
+  margin-top: 15px;
+  background: #f0fff0;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+#card-form label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+#card-form input,
+#card-form select {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}

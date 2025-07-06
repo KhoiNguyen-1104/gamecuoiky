@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> My Website </title>
+    <link rel="stylesheet" href="LogIn.css">
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="icon" type="image/jpg" href="images/Guma.jpg">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+  <header class="top-bar">
+    <p>Khuyến mãi mùa hè - Giảm 50% đơn hàng từ 500k! <a href="#">Mua ngay</a></p>
+  </header>
+
+  <nav class="main-nav">
+    <div class="logo">Exclusive</div>
+    <ul class="nav-links">
+      <li><a href="HP-Test.html">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="About.html">About</a></li>
+      <li><a href="LogIn.html">Sign Up</a></li>
+    </ul>
+    <input type="text" placeholder="Bạn muốn tìm gì?">
+  </nav>
+
+  <main class="login-container">
+    <div class="login-image">
+      <img src="image/cart.jpg" alt="Shopping image">
+    </div>
+    <div class="form-section">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="showForm('login')">Đăng nhập</button>
+        <button class="tab-btn" onclick="showForm('register')">Đăng ký</button>
+      </div>
+
+      <div id="login-form" class="form active">
+        <h2>Đăng nhập</h2>
+        <input type="text" placeholder="Email hoặc Số điện thoại">
+        <input type="password" placeholder="Mật khẩu"><br>
+        <button>Đăng nhập</button><br>
+        <a href="#" class="forgot">Quên mật khẩu?</a>
+      </div>
+
+      <div id="register-form" class="form">
+        <h2>Đăng ký</h2>
+        <input type="text" placeholder="Họ và tên">
+        <input type="email" placeholder="Email">
+        <input type="password" placeholder="Mật khẩu">
+        <input type="password" placeholder="Xác nhận mật khẩu">
+        <button>Đăng ký</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-col">
+      <h3>Exclusive</h3>
+      <p>Giảm 10% cho đơn hàng đầu tiên</p>
+      <input type="email" placeholder="Nhập email của bạn">
+    </div>
+    <div class="footer-col">
+      <h4>Hỗ trợ</h4>
+      <p>111 Đường A, Quận B, TP.HCM</p>
+      <p>email@example.com</p>
+      <p>+84 888 888 999</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tài khoản</h4>
+      <p>Đăng nhập / Đăng ký</p>
+      <p>Giỏ hàng</p>
+      <p>Yêu thích</p>
+    </div>
+    <div class="footer-col">
+      <h4>Liên kết</h4>
+      <p>Chính sách</p>
+      <p>FAQ</p>
+      <p>Liên hệ</p>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    © 2025 Exclusive. All rights reserved.
+  </div>
+
+  <script src="LogIn.js"></script>
+</body>
+</html>

@@ -1,0 +1,80 @@
+.top-bar {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.top-bar a {
+  color: #d4ffdd;
+  margin-left: 10px;
+}
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ddd;
+}
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #333;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e8b57;
+}
+.navbar {
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  border-bottom: 2px solid #4caf50;
+}
+/*FOOTER* neeeeeeee*/
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #222;
+  color: white;
+  padding: 30px 20px;
+}
+
+.footer-col {
+  max-width: 200px;
+}
+
+.footer-col h3, .footer-col h4 {
+  margin-bottom: 10px;
+  color: #90ee90;
+}
+
+.footer-col input {
+  padding: 5px;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-col p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.copyright {
+  text-align: center;
+  background: #111;
+  color: #ccc;
+  padding: 10px;
+  font-size: 13px;
+}

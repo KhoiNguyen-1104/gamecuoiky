@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title> My Website </title>
+    <link rel="stylesheet" href="Cart.css">
+    <link rel="stylesheet" href="header-footer.css">
+    <link rel="icon" type="image/jpg" href="images/Guma.jpg">
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+<body>
+
+<header class="top-bar">
+    <p>Khuyến mãi mùa hè - Giảm 50% đơn hàng từ 500k! <a href="#">Mua ngay</a></p>
+  </header>
+
+  <div class="container">
+    <nav class="breadcrumb">Home > Cart</nav>
+
+  <nav class="main-nav">
+    <div class="logo">Exclusive</div>
+    <ul class="nav-links">
+      <li><a href="HP-Test.html">Home</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="About.html">About</a></li>
+    </ul>
+    <input type="text" placeholder="Bạn muốn tìm gì?">
+  </nav>
+
+  <main class="cart-container">
+    <h2>Giỏ hàng</h2>
+
+    <table class="cart-table">
+      <thead>
+        <tr>
+          <th>Sản phẩm</th>
+          <th>Giá</th>
+          <th>Số lượng</th>
+          <th>Tạm tính</th>
+        </tr>
+      </thead>
+      <tbody id="cart-body">
+        <tr>
+            <td><img src="images/monitor.jpg" alt="Monitor"> LCD Monitor</td>
+            <td>$<span class="price">650</span></td>
+            <td><input type="number" class="quantity" value="1" min="1" oninput="updateCart()"></td>
+            <td>$<span class="subtotal">650</span></td>
+        </tr>
+        <tr>
+            <td><img src="images/gamepad.jpg" alt="Gamepad"> H1 Gamepad</td>
+            <td>$<span class="price">550</span></td>
+            <td><input type="number" class="quantity" value="2" min="1" oninput="updateCart()"></td>
+            <td>$<span class="subtotal">1100</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-actions">
+      <button class="btn-secondary">Quay lại mua sắm</button>
+      <button class="btn-primary">Cập nhật giỏ hàng</button>
+    </div>
+
+    <div class="coupon-summary">
+      <div class="coupon-box">
+        <input type="text" placeholder="Mã giảm giá">
+        <button class="btn-primary">Áp dụng</button>
+      </div>
+      <div class="cart-summary">
+        <h3>Tổng đơn hàng</h3>
+        <p>Tạm tính: <span id="subtotal">$1750</span></p>
+        <p>Vận chuyển: <span>Miễn phí</span></p>
+        <p class="total">Tổng: <span id="total">$1750</span></p>
+        <a href="CheckOut.html">
+          <button class="btn-checkout">Tiến hành thanh toán</button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+     <footer>
+    <div class="footer-col">
+      <h3>Exclusive</h3>
+      <p>Giảm 10% cho đơn hàng đầu tiên</p>
+      <input type="email" placeholder="Nhập email của bạn">
+    </div>
+    <div class="footer-col">
+      <h4>Hỗ trợ</h4>
+      <p>111 Đường A, Quận B, TP.HCM</p>
+      <p>email@example.com</p>
+      <p>+84 888 888 999</p>
+    </div>
+    <div class="footer-col">
+      <h4>Tài khoản</h4>
+      <p>Đăng nhập / Đăng ký</p>
+      <p>Giỏ hàng</p>
+      <p>Yêu thích</p>
+    </div>
+    <div class="footer-col">
+      <h4>Liên kết</h4>
+      <p>Chính sách</p>
+      <p>FAQ</p>
+      <p>Liên hệ</p>
+    </div>
+  </footer>
+
+  <div class="copyright">
+    © 2025 Exclusive. All rights reserved.
+  </div>
+  <script src="Cart.js"></script>
+</body>
+</html>

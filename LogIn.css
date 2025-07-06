@@ -1,0 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5fff5;
+  color: #222;
+}
+
+a {
+  color: #2e8b57;
+  text-decoration: none;
+}
+
+.top-bar {
+  background: #2e7d32;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+
+.top-bar a {
+  color: #d4ffdd;
+  margin-left: 10px;
+}
+
+.main-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 15px 30px;
+  border-bottom: 2px solid #4caf50;
+}
+
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2e8b57;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links li a {
+  color: #333;
+}
+
+.main-nav input {
+  padding: 7px 10px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+  gap: 50px;
+}
+
+.login-image img {
+  max-width: 350px;
+  border-radius: 10px;
+}
+
+.login-form {
+  max-width: 350px;
+}
+
+.login-form h2 {
+  margin-bottom: 10px;
+  color: #2e8b57;
+}
+
+.login-form input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.login-form button {
+  background: #2e8b57;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.login-form .forgot {
+  display: block;
+  text-align: right;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  background: #222;
+  color: white;
+  padding: 30px 20px;
+}
+
+.footer-col {
+  max-width: 200px;
+}
+
+.footer-col h3, .footer-col h4 {
+  margin-bottom: 10px;
+  color: #90ee90;
+}
+
+.footer-col input {
+  padding: 5px;
+  width: 100%;
+  margin-top: 10px;
+  border: none;
+  border-radius: 5px;
+}
+
+.footer-col p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.copyright {
+  text-align: center;
+  background: #111;
+  color: #ccc;
+  padding: 10px;
+  font-size: 13px;
+}
+.form-section {
+  max-width: 350px;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  background: #dfffe1;
+  color: #2e8b57;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.tab-btn.active {
+  background: #2e8b57;
+  color: white;
+}
+
+.form {
+  display: none;
+}
+
+.form.active {
+  display: block;
+}
