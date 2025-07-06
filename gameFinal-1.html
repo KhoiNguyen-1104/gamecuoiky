@@ -1,0 +1,219 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Xếp Số</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-6">
+  <div class="max-w-4xl mx-auto bg-white p-6 rounded-xl shadow-md">
+    <div class="flex justify-between items-center mb-4">
+      <button id="startBtn" class="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded">Bắt đầu</button>
+      <div class="text-center bg-green-100 px-4 py-2 rounded">
+        <div class="text-gray-500 text-sm">Đồng Hồ</div>
+        <div id="timer" class="text-black text-xl font-bold">00:00</div>
+      </div>
+      <div class="text-center">
+        <div class="font-semibold mb-2">Hướng Dẫn Di Chuyển</div>
+        <div class="grid grid-cols-3 gap-1 text-center">
+          <div></div><div class="border rounded">W</div><div></div>
+          <div class="border rounded">A</div><div class="border rounded">S</div><div class="border rounded">D</div>
+        </div>
+      </div>
+    </div>
+
+    <div id="game-board" class="grid grid-cols-4 gap-2 mb-4"></div>
+    <div id="winSection" class="hidden text-center mt-4">
+        <div class="text-4xl font-extrabold text-green-600 mb-4">YOU WIN!</div>
+        <button id="replayBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded">Chơi lại
+        </button>
+    </div>
+
+
+
+    <table class="table-auto w-full text-sm border-t">
+      <thead>
+        <tr class="bg-gray-100 text-gray-600">
+          <th class="border px-2 py-1">#</th>
+          <th class="border px-2 py-1">Bước đi</th>
+          <th class="border px-2 py-1">Thời Gian</th>
+        </tr>
+      </thead>
+      <tbody id="history">
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const colors = [
+      'bg-green-100 text-green-500',
+      'bg-red-100 text-red-500',
+      'bg-blue-100 text-blue-500',
+      'bg-purple-100 text-purple-500',
+      'bg-pink-100 text-pink-500',
+      'bg-yellow-100 text-yellow-500',
+      'bg-indigo-100 text-indigo-500',
+      'bg-gray-100 text-gray-500',
+      'bg-emerald-100 text-emerald-500',
+      'bg-amber-100 text-amber-500',
+      'bg-lime-100 text-lime-500',
+      'bg-black text-cyan-500'
+    ];
+
+    const board = document.getElementById('game-board');
+    const timerDisplay = document.getElementById('timer');
+    const startBtn = document.getElementById('startBtn');
+    const historyTable = document.getElementById('history');
+
+    let timerInterval;
+    let seconds = 0;
+    let tiles = [];
+    let emptyIndex = 11;
+    let isPlaying = false;
+    let moveCount = 0;
+    let gameCount = 0;
+
+    function formatTime(secs) {
+      const mins = String(Math.floor(secs / 60)).padStart(2, '0');
+      const sec = String(secs % 60).padStart(2, '0');
+      return `${mins}:${sec}`;
+    }
+
+    function startTimer() {
+      clearInterval(timerInterval);
+      seconds = 0;
+      timerDisplay.textContent = '00:00';
+      timerInterval = setInterval(() => {
+        seconds++;
+        timerDisplay.textContent = formatTime(seconds);
+      }, 1000);
+    }
+
+    function stopTimer() {
+      clearInterval(timerInterval);
+    }
+
+    function createBoard(shuffleTiles = false) {
+        tiles = Array.from({ length: 11 }, (_, i) => i + 1);
+        tiles.push(null); 
+
+            if (shuffleTiles) {
+                for (let i = tiles.length - 1; i > 0; i--) {
+                    const j = Math.floor(Math.random() * (i + 1));
+                    [tiles[i], tiles[j]] = [tiles[j], tiles[i]];
+                }
+            }
+
+  renderBoard();
+}
+
+
+function renderBoard() {
+  board.innerHTML = '';
+  tiles.forEach((value, index) => {
+    const tile = document.createElement('div');
+    tile.dataset.index = index;
+
+    if (value !== null) {
+      const colorClass = colors[(value - 1) % colors.length];
+      tile.className = `w-full aspect-square flex items-center justify-center font-bold rounded ${colorClass} text-xl`;
+      tile.textContent = value;
+    } else {
+      tile.className = `w-full aspect-square rounded bg-black`; 
+      emptyIndex = index;
+    }
+
+    board.appendChild(tile);
+  });
+}
+
+
+    function checkWin() {
+      for (let i = 0; i < 11; i++) {
+        if (tiles[i] !== i + 1) return false;
+      }
+      return tiles[11] === null;
+    }
+
+    function showWinMessage() {
+        const winSection = document.getElementById('winSection');
+        winSection.classList.remove('hidden');
+}
+
+
+
+    function addToHistory() {
+        gameCount++;
+        const row = document.createElement('tr');
+         row.innerHTML = `
+            <td class="border px-2 py-1 text-center">${gameCount}</td>
+            <td class="border px-2 py-1 text-center">${moveCount}</td>
+            <td class="border px-2 py-1 text-center">${formatTime(seconds)}</td>
+        `;
+        historyTable.appendChild(row);
+    }
+
+
+    function moveTile(direction) {
+      const row = Math.floor(emptyIndex / 4);
+      const col = emptyIndex % 4;
+      let targetIndex = null;
+      if ((direction === 'w' || direction === 'ArrowUp') && row > 0) targetIndex = emptyIndex - 4;
+      if ((direction === 's' || direction === 'ArrowDown') && row < 2) targetIndex = emptyIndex + 4;
+      if ((direction === 'a' || direction === 'ArrowLeft') && col > 0) targetIndex = emptyIndex - 1;
+      if ((direction === 'd' || direction === 'ArrowRight') && col < 3) targetIndex = emptyIndex + 1;
+      if (targetIndex !== null) {
+        [tiles[emptyIndex], tiles[targetIndex]] = [tiles[targetIndex], tiles[emptyIndex]];
+        emptyIndex = targetIndex;
+        moveCount++;
+        renderBoard();
+        if (checkWin()) {
+          stopTimer();
+          showWinMessage();
+          addToHistory();
+          startBtn.textContent = 'Bắt đầu';
+          isPlaying = false;
+        }
+      }
+    }
+
+    startBtn.addEventListener('click', () => {
+        if (!isPlaying) {
+            startTimer();
+            moveCount = 0;
+            createBoard(true);
+            document.getElementById('winSection').classList.add('hidden'); 
+            startBtn.textContent = 'Kết thúc';
+            isPlaying = true;
+        } else {
+            stopTimer();
+            isPlaying = false;
+            startBtn.textContent = 'Bắt đầu';
+             createBoard(true);
+            document.getElementById('winSection').classList.add('hidden'); 
+        }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (!isPlaying) return;
+      const key = e.key;
+      if (['w', 'a', 's', 'd', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(key)) {
+        moveTile(key.toLowerCase());
+      }
+    });
+
+    createBoard(); 
+    document.getElementById('replayBtn').addEventListener('click', () => {
+        startTimer();
+        moveCount = 0;
+        createBoard(true);
+        document.getElementById('winSection').classList.add('hidden');
+        isPlaying = true;
+        startBtn.textContent = 'Kết thúc';
+    });
+
+  </script>
+</body>
+</html>
